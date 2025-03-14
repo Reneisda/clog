@@ -23,8 +23,8 @@ clog_extra("This is an extra message!");
 ```c
 clogf_info("Test: %d\n", 1234);
 clogf_warn("Test: %f\n", 3.14159f);
-clogf_extra("Test: %s\n", "string");
 clogf_error("Test: %d\n", 1234);
+clogf_extra("Test: %s\n", "string");
 ```
 
 ### Log-Info
@@ -39,4 +39,4 @@ clogf_info("Warnings: %d\n", clog_warn_count());
 ### 🔴 all defines have to be set before including clog.h 🔴
 
 ### Sample Output
-
+![image](https://github.com/user-attachments/assets/b85b6d3a-6f72-42a1-b619-ef76d469aeb7)
