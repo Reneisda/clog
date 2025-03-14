@@ -18,16 +18,16 @@
 
 /* LOG LEVEL
  *
- * LOG_LEVEL_ERR/ERROR 			-> only errors
- * LOG_LEVEL_WARN				-> only warnings, errors
- * LOG_LEVEL_INFO				-> warnings, errors, info
+ * LOG_LEVEL_ERR/ERROR           -> only errors
+ * LOG_LEVEL_WARN                -> only warnings, errors
+ * LOG_LEVEL_INFO                -> warnings, errors, info
  */
 
 #define STDOUT                  0
 #define STDERR                  1
 #define __CLOG_NEWLINE          &__new_line
-#define __START_BYTE			27
-#define __FINAL_BYTE 			109
+#define __START_BYTE            27
+#define __FINAL_BYTE             109
 #define __COMMAND_COLOR         91
 
 // colors
@@ -73,122 +73,122 @@ static uint32_t warnings;
 static uint32_t extras;
 
 static size_t len(const char* message) {
-	char* p = (char*) message;
-	while (*p++ != '\0');
-	return p - message;
+    char* p = (char*) message;
+    while (*p++ != '\0');
+    return p - message;
 }
 
 
 void clog_info(const char* message) {
-	#ifdef LOG_LEVEL_INFO
-	++infos;
-	write(STDOUT, CLOG_COLOR_INFO, sizeof(CLOG_COLOR_INFO));
-	write(STDOUT, message, len(message));
-	write(STDOUT, CLOG_RESET_COLOR, sizeof(CLOG_RESET_COLOR));
-	write(STDOUT, __CLOG_NEWLINE, 1);
-	fflush(stdout);
-	#endif
+    #ifdef LOG_LEVEL_INFO
+    ++infos;
+    write(STDOUT, CLOG_COLOR_INFO, sizeof(CLOG_COLOR_INFO));
+    write(STDOUT, message, len(message));
+    write(STDOUT, CLOG_RESET_COLOR, sizeof(CLOG_RESET_COLOR));
+    write(STDOUT, __CLOG_NEWLINE, 1);
+    fflush(stdout);
+    #endif
 }
 
 void clog_error(const char* message) {
-	#if defined(LOG_LEVEL_ERR) || defined(LOG_LEVEL_WARN) || defined(LOG_LEVEL_INFO) 
-	++errors;
-	write(STDOUT, CLOG_COLOR_ERR, sizeof(CLOG_COLOR_ERR));
-	write(STDOUT, message, len(message));
-	write(STDOUT, CLOG_RESET_COLOR, sizeof(CLOG_RESET_COLOR));
-	write(STDOUT, __CLOG_NEWLINE, 1);
-	fflush(stdout);
-	#endif
+    #if defined(LOG_LEVEL_ERR) || defined(LOG_LEVEL_WARN) || defined(LOG_LEVEL_INFO) 
+    ++errors;
+    write(STDOUT, CLOG_COLOR_ERR, sizeof(CLOG_COLOR_ERR));
+    write(STDOUT, message, len(message));
+    write(STDOUT, CLOG_RESET_COLOR, sizeof(CLOG_RESET_COLOR));
+    write(STDOUT, __CLOG_NEWLINE, 1);
+    fflush(stdout);
+    #endif
 }
 
 void clog_warn(const char* message) {
-	#if defined(LOG_LEVEL_WARN) || defined(LOG_LEVEL_INFO) 
-	++warnings;
-	write(STDOUT, CLOG_COLOR_WARN, sizeof(CLOG_COLOR_WARN));
-	write(STDOUT, message, len(message));
-	write(STDOUT, CLOG_RESET_COLOR, sizeof(CLOG_RESET_COLOR));
-	write(STDOUT, __CLOG_NEWLINE, 1);
-	fflush(stdout);
-	#endif
+    #if defined(LOG_LEVEL_WARN) || defined(LOG_LEVEL_INFO) 
+    ++warnings;
+    write(STDOUT, CLOG_COLOR_WARN, sizeof(CLOG_COLOR_WARN));
+    write(STDOUT, message, len(message));
+    write(STDOUT, CLOG_RESET_COLOR, sizeof(CLOG_RESET_COLOR));
+    write(STDOUT, __CLOG_NEWLINE, 1);
+    fflush(stdout);
+    #endif
 }
 
 void clog_extra(const char* message) {
-	#ifdef LOG_LEVEL_INFO 
-	++extras;
-	write(STDOUT, CLOG_COLOR_EXTRA, sizeof(CLOG_COLOR_EXTRA));
-	write(STDOUT, message, len(message));
-	write(STDOUT, CLOG_RESET_COLOR, sizeof(CLOG_RESET_COLOR));
-	write(STDOUT, __CLOG_NEWLINE, 1);
-	fflush(stdout);
-	#endif
+    #ifdef LOG_LEVEL_INFO 
+    ++extras;
+    write(STDOUT, CLOG_COLOR_EXTRA, sizeof(CLOG_COLOR_EXTRA));
+    write(STDOUT, message, len(message));
+    write(STDOUT, CLOG_RESET_COLOR, sizeof(CLOG_RESET_COLOR));
+    write(STDOUT, __CLOG_NEWLINE, 1);
+    fflush(stdout);
+    #endif
 }
 
 void clogf_info(const char* format, ...) {
-	#ifdef LOG_LEVEL_INFO
-	va_list arg;
-	++infos;
-	write(STDOUT, CLOG_COLOR_INFO, sizeof(CLOG_COLOR_INFO));
-	va_start(arg, format);
-	vfprintf(stdout, format, arg);
-	write(STDOUT, CLOG_RESET_COLOR, sizeof(CLOG_RESET_COLOR));
-	fflush(stdout);
-	va_end(arg);
-	#endif
+    #ifdef LOG_LEVEL_INFO
+    va_list arg;
+    ++infos;
+    write(STDOUT, CLOG_COLOR_INFO, sizeof(CLOG_COLOR_INFO));
+    va_start(arg, format);
+    vfprintf(stdout, format, arg);
+    write(STDOUT, CLOG_RESET_COLOR, sizeof(CLOG_RESET_COLOR));
+    fflush(stdout);
+    va_end(arg);
+    #endif
 }
 
 void clogf_error(const char* format, ...) {
-	#if defined(LOG_LEVEL_ERR) || defined(LOG_LEVEL_WARN) || defined(LOG_LEVEL_INFO) 
-	va_list arg;
-	++errors;
-	write(STDOUT, CLOG_COLOR_ERR, sizeof(CLOG_COLOR_ERR));
-	va_start(arg, format);
-	vfprintf(stdout, format, arg);
-	write(STDOUT, CLOG_RESET_COLOR, sizeof(CLOG_RESET_COLOR));
-	fflush(stdout);
-	va_end(arg);
-	#endif
+    #if defined(LOG_LEVEL_ERR) || defined(LOG_LEVEL_WARN) || defined(LOG_LEVEL_INFO) 
+    va_list arg;
+    ++errors;
+    write(STDOUT, CLOG_COLOR_ERR, sizeof(CLOG_COLOR_ERR));
+    va_start(arg, format);
+    vfprintf(stdout, format, arg);
+    write(STDOUT, CLOG_RESET_COLOR, sizeof(CLOG_RESET_COLOR));
+    fflush(stdout);
+    va_end(arg);
+    #endif
 }
 
 void clogf_warn(const char* format, ...) {
-	#if defined(LOG_LEVEL_WARN) || defined(LOG_LEVEL_INFO) 
-	va_list arg;
-	++warnings;
-	write(STDOUT, CLOG_COLOR_WARN, sizeof(CLOG_COLOR_WARN));
-	va_start(arg, format);
-	vfprintf(stdout, format, arg);
-	write(STDOUT, CLOG_RESET_COLOR, sizeof(CLOG_RESET_COLOR));
-	fflush(stdout);
-	va_end(arg);
-	#endif
+    #if defined(LOG_LEVEL_WARN) || defined(LOG_LEVEL_INFO) 
+    va_list arg;
+    ++warnings;
+    write(STDOUT, CLOG_COLOR_WARN, sizeof(CLOG_COLOR_WARN));
+    va_start(arg, format);
+    vfprintf(stdout, format, arg);
+    write(STDOUT, CLOG_RESET_COLOR, sizeof(CLOG_RESET_COLOR));
+    fflush(stdout);
+    va_end(arg);
+    #endif
 }
 
 void clogf_extra(const char* format, ...) {
-	#ifdef LOG_LEVEL_INFO 
-	va_list arg;
-	++extras;
-	write(STDOUT, CLOG_COLOR_EXTRA, sizeof(CLOG_COLOR_EXTRA));
-	va_start(arg, format);
-	vfprintf(stdout, format, arg);
-	write(STDOUT, CLOG_RESET_COLOR, sizeof(CLOG_RESET_COLOR));
-	fflush(stdout);
-	va_end(arg);
-	#endif
+    #ifdef LOG_LEVEL_INFO 
+    va_list arg;
+    ++extras;
+    write(STDOUT, CLOG_COLOR_EXTRA, sizeof(CLOG_COLOR_EXTRA));
+    va_start(arg, format);
+    vfprintf(stdout, format, arg);
+    write(STDOUT, CLOG_RESET_COLOR, sizeof(CLOG_RESET_COLOR));
+    fflush(stdout);
+    va_end(arg);
+    #endif
 }
 
 uint32_t clog_err_count() {
-	return errors; 
+    return errors; 
 }
 
 uint32_t clog_warn_count() {
-	return warnings;
+    return warnings;
 }
 
 uint32_t clog_info_count() {
-	return infos;
+    return infos;
 }
 
 uint32_t clog_extra_count() {
-	return extras;
+    return extras;
 }
 
 #endif
