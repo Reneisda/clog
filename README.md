@@ -40,8 +40,3 @@ clogf_info("Warnings: %d\n", clog_warn_count());
 
 ### Sample Output
 
-<code>2025-03-14 22:40:53]    INFO    This is an info!</code>  
-<code style="color : darkorange">[2025-03-14 22:40:53]   WARN    This is a warning!</code>  
-<code style="color : red">[2025-03-14 22:40:53]   ERROR   This is an error!</code>  
-<code style="color : lightskyblue">[2025-03-14 22:40:53]   EXTRA   This is an extra message!</code>  
-

@@ -1,6 +1,6 @@
 #ifndef __CLOG__
 #define __CLOG__
-#define CLOG_IMPLEMENTATION
+
 // Alias for Error
 #ifdef LOG_LEVEL_ERROR
 #define LOG_LEVEL_ERR
