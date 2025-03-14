@@ -24,7 +24,7 @@ clog_warn("Another Warning!");
 clogf_info("Test: %d\n", 1234);
 clogf_warn("Test: %f\n", 3.145f);
 clogf_extra("Test: %s\n", "string");
-clogf_error("Test: 0.3%d\n", 1234);
+clogf_error("Test: %d\n", 1234);
 ```
 
 ### Log-Info
