@@ -1,5 +1,6 @@
 # C-Logger clog
 ## c stb-style header-only library for logging
+#### Logging is added at compile-time and so is removing
 
 ## Log-level
 - LOG_LEVEL_ERR
@@ -22,7 +23,7 @@ clog_warn("Another Warning!");
 ### Formatted Logging
 ```c
 clogf_info("Test: %d\n", 1234);
-clogf_warn("Test: %f\n", 3.145f);
+clogf_warn("Test: %f\n", 3.14159f);
 clogf_extra("Test: %s\n", "string");
 clogf_error("Test: %d\n", 1234);
 ```
