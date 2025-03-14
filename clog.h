@@ -68,10 +68,10 @@ uint32_t clog_extra_count();
 static char time_f[100];
 
 static void update_time() {
-	time_t now = time(0);
-	char tmp[sizeof(time_f)];
-	strftime(tmp, sizeof(tmp), "[%Y-%m-%d %H:%M:%S]", localtime (&now));
-	snprintf(time_f, sizeof(time_f), "%-24s", tmp);
+    time_t now = time(0);
+    char tmp[sizeof(time_f)];
+    strftime(tmp, sizeof(tmp), "[%Y-%m-%d %H:%M:%S]", localtime (&now));
+    snprintf(time_f, sizeof(time_f), "%-24s", tmp);
 }
 #endif
 
@@ -105,8 +105,8 @@ static size_t len(const char* message) {
 
 #ifndef LOG_NO_TIMESTAMPS
 #define LOG_TIME() do { \
-	update_time(); \
-	write(STDOUT, time_f, len(time_f)); \
+    update_time(); \
+    write(STDOUT, time_f, len(time_f)); \
 } while (0)
 #else
 #define LOG_TIME()
@@ -117,9 +117,9 @@ void clog_info(const char* message) {
     #ifdef LOG_LEVEL_INFO
     ++infos;
     write(STDOUT, CLOG_COLOR_INFO, sizeof(CLOG_COLOR_INFO));
-	LOG_TIME();
-	SHOW_LOG_LEVEL("INFO    ");
-	write(STDOUT, message, len(message));
+    LOG_TIME();
+    SHOW_LOG_LEVEL("INFO    ");
+    write(STDOUT, message, len(message));
     write(STDOUT, CLOG_RESET_COLOR, sizeof(CLOG_RESET_COLOR));
     write(STDOUT, __CLOG_NEWLINE, 1);
     fflush(stdout);
@@ -130,8 +130,8 @@ void clog_error(const char* message) {
     #if defined(LOG_LEVEL_ERR) || defined(LOG_LEVEL_WARN) || defined(LOG_LEVEL_INFO) 
     ++errors;
     write(STDOUT, CLOG_COLOR_ERR, sizeof(CLOG_COLOR_ERR));
-	LOG_TIME();
-	SHOW_LOG_LEVEL("ERROR   ");
+    LOG_TIME();
+    SHOW_LOG_LEVEL("ERROR   ");
     write(STDOUT, message, len(message));
     write(STDOUT, CLOG_RESET_COLOR, sizeof(CLOG_RESET_COLOR));
     write(STDOUT, __CLOG_NEWLINE, 1);
@@ -143,8 +143,8 @@ void clog_warn(const char* message) {
     #if defined(LOG_LEVEL_WARN) || defined(LOG_LEVEL_INFO) 
     ++warnings;
     write(STDOUT, CLOG_COLOR_WARN, sizeof(CLOG_COLOR_WARN));
-	LOG_TIME();
-	SHOW_LOG_LEVEL("WARN    ");
+    LOG_TIME();
+    SHOW_LOG_LEVEL("WARN    ");
     write(STDOUT, message, len(message));
     write(STDOUT, CLOG_RESET_COLOR, sizeof(CLOG_RESET_COLOR));
     write(STDOUT, __CLOG_NEWLINE, 1);
@@ -156,8 +156,8 @@ void clog_extra(const char* message) {
     #ifdef LOG_LEVEL_INFO 
     ++extras;
     write(STDOUT, CLOG_COLOR_EXTRA, sizeof(CLOG_COLOR_EXTRA));
-	LOG_TIME();
-	SHOW_LOG_LEVEL("EXTRA   ");
+    LOG_TIME();
+    SHOW_LOG_LEVEL("EXTRA   ");
     write(STDOUT, message, len(message));
     write(STDOUT, CLOG_RESET_COLOR, sizeof(CLOG_RESET_COLOR));
     write(STDOUT, __CLOG_NEWLINE, 1);
@@ -170,8 +170,8 @@ void clogf_info(const char* format, ...) {
     va_list arg;
     ++infos;
     write(STDOUT, CLOG_COLOR_INFO, sizeof(CLOG_COLOR_INFO));
-	LOG_TIME();
-	SHOW_LOG_LEVEL("INFO    ");
+    LOG_TIME();
+    SHOW_LOG_LEVEL("INFO    ");
     va_start(arg, format);
     vfprintf(stdout, format, arg);
     write(STDOUT, CLOG_RESET_COLOR, sizeof(CLOG_RESET_COLOR));
@@ -185,8 +185,8 @@ void clogf_error(const char* format, ...) {
     va_list arg;
     ++errors;
     write(STDOUT, CLOG_COLOR_ERR, sizeof(CLOG_COLOR_ERR));
-	LOG_TIME();
-	SHOW_LOG_LEVEL("ERROR   ");
+    LOG_TIME();
+    SHOW_LOG_LEVEL("ERROR   ");
     va_start(arg, format);
     vfprintf(stdout, format, arg);
     write(STDOUT, CLOG_RESET_COLOR, sizeof(CLOG_RESET_COLOR));
@@ -200,8 +200,8 @@ void clogf_warn(const char* format, ...) {
     va_list arg;
     ++warnings;
     write(STDOUT, CLOG_COLOR_WARN, sizeof(CLOG_COLOR_WARN));
-	LOG_TIME();
-	SHOW_LOG_LEVEL("WARN    ");
+    LOG_TIME();
+    SHOW_LOG_LEVEL("WARN    ");
     va_start(arg, format);
     vfprintf(stdout, format, arg);
     write(STDOUT, CLOG_RESET_COLOR, sizeof(CLOG_RESET_COLOR));
@@ -215,8 +215,8 @@ void clogf_extra(const char* format, ...) {
     va_list arg;
     ++extras;
     write(STDOUT, CLOG_COLOR_EXTRA, sizeof(CLOG_COLOR_EXTRA));
-	LOG_TIME();
-	SHOW_LOG_LEVEL("EXTRA   ");
+    LOG_TIME();
+    SHOW_LOG_LEVEL("EXTRA   ");
     va_start(arg, format);
     vfprintf(stdout, format, arg);
     write(STDOUT, CLOG_RESET_COLOR, sizeof(CLOG_RESET_COLOR));
