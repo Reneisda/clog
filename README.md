@@ -1,6 +1,6 @@
 # C-Logger clog
 ## c stb-style header-only library for logging
-#### Logging is added at compile-time and so is removing
+#### Logging is added pre-compile-time
 
 ## Log-level
 - LOG_LEVEL_ERR
@@ -14,10 +14,9 @@
 #include "clog.h"
 
 clog_info("This is an info!");
-clog_error("This is an error!");
 clog_warn("This is a warning!");
+clog_error("This is an error!");
 clog_extra("This is an extra message!");
-clog_warn("Another Warning!");
 ```
 
 ### Formatted Logging
@@ -31,5 +30,19 @@ clogf_error("Test: %d\n", 1234);
 ### Log-Info
 ```c
 clogf_info("Warnings: %d\n", clog_warn_count());
+```
+
+### Extra pre-compile #defines
+- LOG_ONLY_COLORS       -> disable Lables [INFO / WARN / ERR / EXTRA]
+- LOG_NO_TIMESTAMPS     -> disables timestamps
+
+### 🔴 all defines have to be set before including clog.h 🔴
+
+### Sample Output
+```c
+<span style="color:white">[2025-03-14 22:40:53]   This is an info!</span>.
+<span style="color:yellow">[2025-03-14 22:40:53]   This is a warning!</span>.
+<span style="color:red">[2025-03-14 22:40:53]   This is an error!</span>.
+<span style="color:cyan">[2025-03-14 22:40:53]   This is an extra message!</span>.
 ```
 
