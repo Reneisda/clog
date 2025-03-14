@@ -39,10 +39,9 @@ clogf_info("Warnings: %d\n", clog_warn_count());
 ### 🔴 all defines have to be set before including clog.h 🔴
 
 ### Sample Output
-```c
-<span style="color:white">[2025-03-14 22:40:53]   This is an info!</span>.
-<span style="color:yellow">[2025-03-14 22:40:53]   This is a warning!</span>.
-<span style="color:red">[2025-03-14 22:40:53]   This is an error!</span>.
-<span style="color:cyan">[2025-03-14 22:40:53]   This is an extra message!</span>.
-```
+
+<code>2025-03-14 22:40:53]    INFO    This is an info!</code>  
+<code style="color : darkorange">[2025-03-14 22:40:53]   WARN    This is a warning!</code>  
+<code style="color : red">[2025-03-14 22:40:53]   ERROR   This is an error!</code>  
+<code style="color : lightskyblue">[2025-03-14 22:40:53]   EXTRA   This is an extra message!</code>  
 
