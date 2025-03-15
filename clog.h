@@ -1,13 +1,17 @@
 #ifndef __CLOG__
 #define __CLOG__
-
 // Alias for Error
 #ifdef LOG_LEVEL_ERROR
 #define LOG_LEVEL_ERR
 #endif
 
+#ifdef LOG_LEVEL_ALL
+#define LOG_LEVEL_INFO
+#endif
+
 // Sets LOG_LEVEL_INFO as default if nothing other is provided
-#if !defined(LOG_LEVEL_ERR) && !defined(LOG_LEVEL_WARN) && !defined(LOG_LEVEL_INFO)
+#if !defined(LOG_LEVEL_ERR) && !defined(LOG_LEVEL_WARN) && !defined(LOG_LEVEL_INFO) && !defined(LOG_LEVEL_NONE)
+
 #define LOG_LEVEL_INFO
 #endif
 
@@ -22,7 +26,7 @@
 
 
 /* LOG LEVEL
- *
+ * LOG_LEVEL_NONE                -> No Logging
  * LOG_LEVEL_ERR/ERROR           -> only errors
  * LOG_LEVEL_WARN                -> only warnings, errors
  * LOG_LEVEL_INFO                -> warnings, errors, info
