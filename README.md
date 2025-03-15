@@ -3,10 +3,10 @@
 #### Logging is added pre-compile-time
 
 ## Log-level
-- LOG_LEVEL_ERR
-- LOG_LEVEL_WARN
-- LOG_LEVEL_INFO
-- LOG_LEVEL_EXTRA
+- LOG_LEVEL_NONE    -> No Logging
+- LOG_LEVEL_ERR     -> Only Logging errors
+- LOG_LEVEL_WARN    -> Logging errors and warnings
+- LOG_LEVEL_INFO    -> Logging errors, warnings, infos and extras
 
 ## Examples
 ```c
